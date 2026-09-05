@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TodoListAPI.Models;
 
-[Route("api/[controller]")]
+[Route("[controller]")]
 [ApiController]
 public class TodoesController : ControllerBase
 {
@@ -19,7 +19,7 @@ public class TodoesController : ControllerBase
         return await _context.Todo.ToListAsync();
     }
 
-    // GET: api/Todo/5
+    // GET: Todo/5
     [HttpGet("{id}")]
     public async Task<ActionResult<Todo>> GetTodo(int id)
     {
@@ -33,12 +33,12 @@ public class TodoesController : ControllerBase
         return todo;
     }
 
-    // PUT: api/Todo/5
+    // PUT: Todo/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPut("{id}")]
     public async Task<IActionResult> PutTodo(int? id, Todo todo)
     {
-        if (id != todo.id)
+        if (id != todo.TodoId)
         {
             return BadRequest();
         }
@@ -64,7 +64,7 @@ public class TodoesController : ControllerBase
         return NoContent();
     }
 
-    // POST: api/Todo
+    // POST: Todo
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPost]
     public async Task<ActionResult<Todo>> PostTodo(Todo todo)
@@ -72,10 +72,10 @@ public class TodoesController : ControllerBase
         _context.Todo.Add(todo);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction("GetTodo", new { id = todo.id }, todo);
+        return CreatedAtAction("GetTodo", new { id = todo.TodoId }, todo);
     }
 
-    // DELETE: api/Todo/5
+    // DELETE: Todo/5
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteTodo(int? id)
     {
@@ -93,6 +93,6 @@ public class TodoesController : ControllerBase
 
     private bool TodoExists(int? id)
     {
-        return _context.Todo.Any(e => e.id == id);
+        return _context.Todo.Any(e => e.TodoId == id);
     }
 }
