@@ -34,7 +34,6 @@ public class UsersController : ControllerBase
     }
 
     // PUT: api/User/5
-    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPut("{id}")]
     public async Task<IActionResult> PutUser(int? id, User user)
     {
@@ -68,6 +67,7 @@ public class UsersController : ControllerBase
     [HttpPost("register")]
     public async Task<ActionResult<User>> Register(User user)
     {
+        user.Password = Hash.GetHashCode(user.Password??"");
         _context.User.Add(user);
         await _context.SaveChangesAsync();
 
