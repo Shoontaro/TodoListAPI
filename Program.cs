@@ -1,4 +1,8 @@
+using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("TodoListAPIContext") ?? throw new InvalidOperationException("Connection string 'TodoListAPIContext' not found.");
+
+builder.Services.AddDbContext<TodoListAPIContext>(options => options.UseSqlServer(connectionString));
 
 // Add services to the container.
 
