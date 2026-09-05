@@ -64,9 +64,8 @@ public class UsersController : ControllerBase
         return NoContent();
     }
 
-    // POST: api/User
-    // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-    [HttpPost]
+    // POST: User/register
+    [HttpPost("register")]
     public async Task<ActionResult<User>> Register(User user)
     {
         _context.User.Add(user);
@@ -75,7 +74,7 @@ public class UsersController : ControllerBase
         return CreatedAtAction("GetUser", new { id = user.Id }, user);
     }
 
-    // DELETE: api/User/5
+    // DELETE: User/5
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteUser(int? id)
     {

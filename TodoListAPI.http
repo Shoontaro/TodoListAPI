@@ -4,3 +4,13 @@ GET {{TodoListAPI_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+POST {{TodoListAPI_HostAddress}}/users/register
+Content-Type: application/json
+{
+  "name": "John Doe",
+  "email": "john@doe.com",
+  "password": "password"
+}
+
+###
