@@ -10,7 +10,6 @@ public static class Hash
 
     public static bool VerifyPassword(string password, string hashedPassword)
     {
-        // Метод сам извлечет соль из хэша и сравнит результаты
         return BCrypt.Net.BCrypt.Verify(password, hashedPassword);
     }
 }

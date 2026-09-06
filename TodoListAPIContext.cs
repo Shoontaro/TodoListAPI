@@ -1,6 +1,11 @@
 using Microsoft.EntityFrameworkCore;
+using TodoListAPI.Models;
 
-public class TodoListAPIContext(DbContextOptions<TodoListAPIContext> options) : DbContext(options)
+public class TodoListAPIContext : DbContext
 {
-    public DbSet<TodoListAPI.Models.Todo> Todo { get; set; } = default!;
+    public TodoListAPIContext(DbContextOptions<TodoListAPIContext> options) : base(options)
+    {
+    }
+    public DbSet<Todo> Todo { get; set; }
+    public DbSet<User> Users { get; set; }
 }

@@ -5,11 +5,16 @@ Accept: application/json
 
 ###
 
+GET {{TodoListAPI_HostAddress}}/users/
+Accept: application/json
+
+###
+
 POST {{TodoListAPI_HostAddress}}/users/register
 Content-Type: application/json
 {
-  "name": "John Doe",
-  "email": "john@doe.com",
+  "name": "Yumo",
+  "email": "yumo@doe.com",
   "password": "password"
 }
 
